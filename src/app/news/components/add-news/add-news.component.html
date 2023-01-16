@@ -15,7 +15,11 @@
   <nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired>Фото</nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Поле обязательное">
-      <nz-upload [nzBeforeUpload]="beforeUpload" [nzLimit]="1">
+      <nz-upload
+        [nzBeforeUpload]="beforeUpload"
+        [nzLimit]="1"
+        [nzAccept]="['.png', '.jpeg', '.jpg', '.gif', '.webp']"
+      >
         <button nz-button>
           <span nz-icon nzType="upload"></span>
           Выбрать фото
