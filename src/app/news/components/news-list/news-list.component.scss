@@ -1,0 +1,63 @@
+.add-button {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  background-color: #000;
+}
+
+.news {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  &__card {
+    width: 326px;
+
+    &:hover {
+      box-shadow: 0 1px 2px -2px rgb(255, 255, 255, 0.64), 0 3px 6px 0 rgb(255, 255, 255, 0.48),
+        0 5px 12px 4px rgba(255, 255, 255, 0.36);
+    }
+  }
+
+  &__card.user-news {
+    cursor: not-allowed;
+  }
+
+  &__content {
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__image {
+    max-height: 218px;
+    max-width: 326px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__type {
+    padding: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+    background-color: #ffff;
+    color: black;
+  }
+
+  .scroll-spin {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+  }
+}

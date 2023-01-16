@@ -1,1 +1,51 @@
-<p>news-list works!</p>
+<button
+  *ngIf="!isLoading"
+  (click)="createModalAddNews()"
+  nz-button
+  nz-tooltip="Добавить новость"
+  nzTooltipPlacement="bottom"
+  nzType="default"
+  class="add-button"
+>
+  <span style="color: white" nz-icon nzType="plus" nzTheme="outline"></span>
+</button>
+<nz-spin [nzSpinning]="isLoading">
+  <div #newsListElement class="news">
+    <ng-container *ngFor="let news of newsList">
+      <nz-card
+        *ngIf="!news.isUserNews"
+        class="news__card"
+        nzHoverable
+        [nzCover]="news.titleImageUrl ? coverTemplate : undefined"
+        [routerLink]="[news.url]"
+      >
+        <div class="news__content">
+          <div>
+            <div class="news__type">{{ news.categoryType }}</div>
+            <h2>{{ news.title }}</h2>
+            <p>{{ news.description }}</p>
+          </div>
+          <span>{{ news.publishedDate | date : 'dd.MM.yyyy' }}</span>
+        </div>
+      </nz-card>
+      <nz-card
+        *ngIf="news.isUserNews"
+        class="news__card user-news"
+        nzHoverable
+        [nzCover]="news.titleImageUrl ? coverTemplate : undefined"
+      >
+        <div class="news__content">
+          <div>
+            <h2>{{ news.title }}</h2>
+            <p>{{ news.description }}</p>
+          </div>
+          <span>{{ news.publishedDate | date : 'dd.MM.yyyy' }}</span>
+        </div>
+      </nz-card>
+      <ng-template #coverTemplate>
+        <img class="news__image" alt="Title Image" [src]="news.titleImageUrl" />
+      </ng-template>
+    </ng-container>
+    <nz-spin class="scroll-spin" [nzSpinning]="isScrollLoading"></nz-spin>
+  </div>
+</nz-spin>

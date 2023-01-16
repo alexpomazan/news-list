@@ -1,0 +1,38 @@
+<form nz-form [formGroup]="formGroup">
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="title">Наименование</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Поле обязательное">
+      <input nz-input formControlName="title" id="title" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="password" nzRequired>Описание</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Поле обязательное">
+      <input nz-input formControlName="description" id="description" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired>Фото</nz-form-label>
+    <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Поле обязательное">
+      <nz-upload [nzBeforeUpload]="beforeUpload" [nzLimit]="1">
+        <button nz-button>
+          <span nz-icon nzType="upload"></span>
+          Выбрать фото
+        </button>
+        <span style="margin-left: 5px">{{ selectedFile }}</span>
+      </nz-upload>
+    </nz-form-control>
+  </nz-form-item>
+  <div class="form-actions">
+    <button
+      class="submit-button"
+      nz-button
+      (click)="submitForm()"
+      [disabled]="formGroup.invalid"
+      nzType="primary"
+    >
+      Добавить
+    </button>
+  </div>
+</form>
